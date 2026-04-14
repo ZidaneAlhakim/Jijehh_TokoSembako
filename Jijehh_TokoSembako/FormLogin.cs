@@ -49,9 +49,19 @@ namespace Jijehh_TokoSembako
 
                     this.Hide(); // Sembunyikan form login
 
-                    // Sementara arahkan ke FormUtama biar sukses login bisa langsung kelihatan tabelnya
-                    FormUtama fUtama = new FormUtama();
-                    fUtama.Show();
+                    // LOGIKA PENGALIHAN HALAMAN BERDASARKAN ROLE
+                    if (role == "Owner" || role == "Kasir")
+                    {
+                        // Owner dan Kasir masuk ke Dashboard Utama
+                        FormDashboard fDashboard = new FormDashboard();
+                        fDashboard.Show();
+                    }
+                    else if (role == "StokBarang")
+                    {
+                        // Orang Gudang langsung masuk ke form kelola stok (FormUtama)
+                        FormUtama fUtama = new FormUtama();
+                        fUtama.Show();
+                    }
                 }
                 else
                 {
