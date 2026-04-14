@@ -55,6 +55,7 @@
             this.dgvData.RowTemplate.Height = 24;
             this.dgvData.Size = new System.Drawing.Size(1170, 256);
             this.dgvData.TabIndex = 0;
+            this.dgvData.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellClick);
             // 
             // Label1
             // 
@@ -109,6 +110,7 @@
             this.btnSimpan.TabIndex = 6;
             this.btnSimpan.Text = "Simpan";
             this.btnSimpan.UseVisualStyleBackColor = true;
+            this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
             // 
             // btnUbah
             // 
@@ -118,6 +120,7 @@
             this.btnUbah.TabIndex = 7;
             this.btnUbah.Text = "Ubah";
             this.btnUbah.UseVisualStyleBackColor = true;
+            this.btnUbah.Click += new System.EventHandler(this.btnUbah_Click);
             // 
             // btnHapus
             // 
@@ -127,6 +130,7 @@
             this.btnHapus.TabIndex = 8;
             this.btnHapus.Text = "Hapus";
             this.btnHapus.UseVisualStyleBackColor = true;
+            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
             // lblTotalRecord
             // 
