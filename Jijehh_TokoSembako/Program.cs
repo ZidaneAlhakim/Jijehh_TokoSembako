@@ -16,7 +16,7 @@ namespace Jijehh_TokoSembako
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormUtama());
+            Application.Run(new FormLogin());
         }
     }
 }
