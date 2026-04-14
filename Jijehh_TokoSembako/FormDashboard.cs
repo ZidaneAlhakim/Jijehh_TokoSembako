@@ -31,9 +31,13 @@ namespace Jijehh_TokoSembako
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            this.Close(); // Nutup dashboard
-            FormLogin fLogin = new FormLogin();
-            fLogin.Show(); // Balik ke halaman login
+            DialogResult dialogResult = MessageBox.Show("Apakah Anda yakin ingin keluar dari sistem?", "Konfirmasi Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+                FormLogin fLogin = new FormLogin();
+                fLogin.Show();
+            }
         }
 
         private void btnStok_Click(object sender, EventArgs e)
