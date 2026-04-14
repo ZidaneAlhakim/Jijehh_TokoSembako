@@ -7,7 +7,13 @@ namespace Jijehh_TokoSembako
 {
     public partial class FormUtama : Form
     {
-        
+ /* * =========================================================
+ * MODUL KELOLA DATA BARANG (CRUD)
+ * Fungsi: Menambah, mengubah, menghapus, dan mencari data
+ * Dilengkapi dengan validasi tipe data pada input numerik
+ * =========================================================
+ */
+
         SqlConnection conn = new SqlConnection("Server=LAPTOP-M60LBIQK\\ZIDANEAS;Database=DB_TokoSembako;Integrated Security=True;");
 
         public FormUtama()
