@@ -114,6 +114,7 @@
             this.txtTelepon.Name = "txtTelepon";
             this.txtTelepon.Size = new System.Drawing.Size(126, 22);
             this.txtTelepon.TabIndex = 7;
+            this.txtTelepon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelepon_KeyPress);
             // 
             // txtAlamat
             // 

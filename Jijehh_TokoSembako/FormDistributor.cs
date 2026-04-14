@@ -99,5 +99,15 @@ namespace Jijehh_TokoSembako
             }
             catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); if (conn.State == ConnectionState.Open) conn.Close(); }
         }
+
+        private void txtTelepon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Hanya mengizinkan angka dan tombol Backspace untuk No Telepon
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Nomor Telepon wajib diisi dengan angka!", "Validasi Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
