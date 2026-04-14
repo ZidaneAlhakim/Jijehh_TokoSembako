@@ -16,5 +16,30 @@ namespace Jijehh_TokoSembako
         {
             InitializeComponent();
         }
+
+        private void btnDistributor_Click(object sender, EventArgs e)
+        {
+            FormDistributor fDistri = new FormDistributor();
+            fDistri.ShowDialog();
+        }
+
+        private void btnLaporan_Click(object sender, EventArgs e)
+        {
+            FormLaporan fLapor = new FormLaporan();
+            fLapor.ShowDialog();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close(); // Nutup dashboard
+            FormLogin fLogin = new FormLogin();
+            fLogin.Show(); // Balik ke halaman login
+        }
+
+        private void btnStok_Click(object sender, EventArgs e)
+        {
+            FormUtama fUtama = new FormUtama();
+            fUtama.ShowDialog();
+        }
     }
 }
