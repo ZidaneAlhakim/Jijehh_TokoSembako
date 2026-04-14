@@ -39,7 +39,7 @@ namespace Jijehh_TokoSembako
         private void btnStok_Click(object sender, EventArgs e)
         {
             FormUtama fUtama = new FormUtama();
-            fUtama.ShowDialog();
+            fUtama.ShowDialog();    
         }
     }
 }
