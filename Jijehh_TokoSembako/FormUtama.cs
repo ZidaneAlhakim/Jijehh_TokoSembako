@@ -235,5 +235,15 @@ namespace Jijehh_TokoSembako
             txtHarga.Text = "";
             txtID.Focus();
         }
+
+        private void txtStok_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Hanya mengizinkan angka dan tombol Backspace
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Tolak inputan jika bukan angka
+                MessageBox.Show("Stok hanya boleh diisi dengan angka!", "Validasi Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
