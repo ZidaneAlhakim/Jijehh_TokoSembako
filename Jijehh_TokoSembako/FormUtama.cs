@@ -245,5 +245,15 @@ namespace Jijehh_TokoSembako
                 MessageBox.Show("Stok hanya boleh diisi dengan angka!", "Validasi Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void txtHarga_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Hanya mengizinkan angka dan tombol Backspace
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Harga hanya boleh diisi dengan nominal angka!", "Validasi Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

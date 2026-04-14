@@ -181,6 +181,7 @@
             this.txtHarga.Name = "txtHarga";
             this.txtHarga.Size = new System.Drawing.Size(100, 22);
             this.txtHarga.TabIndex = 14;
+            this.txtHarga.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHarga_KeyPress);
             // 
             // label6
             // 
