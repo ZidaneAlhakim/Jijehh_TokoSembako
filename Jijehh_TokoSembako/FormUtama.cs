@@ -225,5 +225,15 @@ namespace Jijehh_TokoSembako
                 if (conn.State == ConnectionState.Open) conn.Close();
             }
         }
+
+        private void btnBersih_Click(object sender, EventArgs e)
+        {
+            txtID.Text = "";
+            txtNama.Text = "";
+            txtKategori.Text = "";
+            txtStok.Text = "";
+            txtHarga.Text = "";
+            txtID.Focus();
+        }
     }
 }

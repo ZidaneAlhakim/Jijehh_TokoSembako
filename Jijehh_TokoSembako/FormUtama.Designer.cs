@@ -45,6 +45,7 @@
             this.txtHarga = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtCari = new System.Windows.Forms.TextBox();
+            this.btnBersih = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -195,11 +196,22 @@
             this.txtCari.TabIndex = 16;
             this.txtCari.TextChanged += new System.EventHandler(this.txtCari_TextChanged);
             // 
+            // btnBersih
+            // 
+            this.btnBersih.Location = new System.Drawing.Point(394, 316);
+            this.btnBersih.Name = "btnBersih";
+            this.btnBersih.Size = new System.Drawing.Size(96, 34);
+            this.btnBersih.TabIndex = 17;
+            this.btnBersih.Text = "Bersihkan";
+            this.btnBersih.UseVisualStyleBackColor = true;
+            this.btnBersih.Click += new System.EventHandler(this.btnBersih_Click);
+            // 
             // FormUtama
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1186, 783);
+            this.Controls.Add(this.btnBersih);
             this.Controls.Add(this.txtCari);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtHarga);
@@ -245,6 +257,7 @@
         private System.Windows.Forms.TextBox txtHarga;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtCari;
+        private System.Windows.Forms.Button btnBersih;
     }
 }
 
