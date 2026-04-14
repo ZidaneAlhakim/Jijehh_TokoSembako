@@ -43,6 +43,8 @@
             this.txtKategori = new System.Windows.Forms.TextBox();
             this.txtStok = new System.Windows.Forms.TextBox();
             this.txtHarga = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtCari = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -176,11 +178,30 @@
             this.txtHarga.Size = new System.Drawing.Size(100, 22);
             this.txtHarga.TabIndex = 14;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(803, 334);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(118, 16);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Cari Nama Barang";
+            // 
+            // txtCari
+            // 
+            this.txtCari.Location = new System.Drawing.Point(940, 334);
+            this.txtCari.Name = "txtCari";
+            this.txtCari.Size = new System.Drawing.Size(211, 22);
+            this.txtCari.TabIndex = 16;
+            this.txtCari.TextChanged += new System.EventHandler(this.txtCari_TextChanged);
+            // 
             // FormUtama
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1186, 783);
+            this.Controls.Add(this.txtCari);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.txtHarga);
             this.Controls.Add(this.txtStok);
             this.Controls.Add(this.txtKategori);
@@ -222,6 +243,8 @@
         private System.Windows.Forms.TextBox txtKategori;
         private System.Windows.Forms.TextBox txtStok;
         private System.Windows.Forms.TextBox txtHarga;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtCari;
     }
 }
 

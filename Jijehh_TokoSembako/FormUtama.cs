@@ -201,5 +201,29 @@ namespace Jijehh_TokoSembako
                 }
             }
         }
+
+        private void txtCari_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                conn.Open();
+                // Syarat UCP: Menggunakan query pencarian dengan klausa LIKE
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Barang WHERE Nama_Barang LIKE '%' + @cari + '%'", conn);
+                cmd.Parameters.AddWithValue("@cari", txtCari.Text);
+
+                SqlDataReader rd = cmd.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(rd);
+
+                // Langsung timpa isi tabel dengan hasil pencarian
+                dgvData.DataSource = dt;
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal mencari data: " + ex.Message);
+                if (conn.State == ConnectionState.Open) conn.Close();
+            }
+        }
     }
 }
