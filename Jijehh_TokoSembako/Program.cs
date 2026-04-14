@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * ========================================================
+ * SISTEM INFORMASI KASIR TOKO SEMBAKO
+ * Arsitektur : Multi-Role (Owner, Kasir, Gudang)
+ * Database   : SQL Server (Terpusat)
+ * Status     : Siap Diuji UCP 
+ * ========================================================
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
