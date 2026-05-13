@@ -50,3 +50,12 @@ BEGIN
     SELECT * FROM vw_TampilBarang WHERE Nama_Barang LIKE '%' + @Cari + '%'
 END
 GO
+
+CREATE PROCEDURE sp_CountBarang
+    @Total INT OUTPUT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SELECT @Total = COUNT(*) FROM Barang
+END
+GO
