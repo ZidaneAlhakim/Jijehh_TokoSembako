@@ -32,6 +32,7 @@
             this.btnDistributor = new System.Windows.Forms.Button();
             this.btnLaporan = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // btnStok
@@ -87,6 +88,14 @@
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(33, 66);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(741, 358);
+            this.flowLayoutPanel1.TabIndex = 4;
+            // 
             // FormDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -97,6 +106,7 @@
             this.Controls.Add(this.btnLaporan);
             this.Controls.Add(this.btnDistributor);
             this.Controls.Add(this.btnStok);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "FormDashboard";
             this.Text = "FormDashboard";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -110,5 +120,6 @@
         private System.Windows.Forms.Button btnDistributor;
         private System.Windows.Forms.Button btnLaporan;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

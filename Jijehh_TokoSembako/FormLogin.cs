@@ -75,5 +75,14 @@ namespace Jijehh_TokoSembako
                 MessageBox.Show("Error Database: " + ex.Message);
             }
         }
+        private void ValidasiID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Hanya izinkan huruf, angka, dan tombol hapus (backspace)
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Kolom ID/Username hanya boleh diisi Huruf dan Angka tanpa spasi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

@@ -97,28 +97,34 @@
             // txtID
             // 
             this.txtID.Location = new System.Drawing.Point(188, 40);
+            this.txtID.MaxLength = 5;
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(126, 22);
             this.txtID.TabIndex = 5;
+            this.txtID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidasiID_KeyPress);
             // 
             // txtNama
             // 
             this.txtNama.Location = new System.Drawing.Point(188, 75);
+            this.txtNama.MaxLength = 50;
             this.txtNama.Name = "txtNama";
             this.txtNama.Size = new System.Drawing.Size(126, 22);
             this.txtNama.TabIndex = 6;
+            this.txtNama.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNama_KeyPress);
             // 
             // txtTelepon
             // 
             this.txtTelepon.Location = new System.Drawing.Point(188, 111);
+            this.txtTelepon.MaxLength = 15;
             this.txtTelepon.Name = "txtTelepon";
             this.txtTelepon.Size = new System.Drawing.Size(126, 22);
             this.txtTelepon.TabIndex = 7;
-            this.txtTelepon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelepon_KeyPress);
+            this.txtTelepon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidasiTelepon_KeyPress);
             // 
             // txtAlamat
             // 
             this.txtAlamat.Location = new System.Drawing.Point(188, 149);
+            this.txtAlamat.MaxLength = 100;
             this.txtAlamat.Name = "txtAlamat";
             this.txtAlamat.Size = new System.Drawing.Size(126, 22);
             this.txtAlamat.TabIndex = 8;

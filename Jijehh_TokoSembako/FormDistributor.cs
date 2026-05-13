@@ -51,6 +51,12 @@ namespace Jijehh_TokoSembako
 
         private void btnSimpan_Click(object sender, EventArgs e)
         {
+            if (txtNama.Text.Trim() == "")
+            {
+                MessageBox.Show("Nama Distributor tidak boleh kosong!", "Validasi Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNama.Focus(); // Bikin kursor kedip-kedip di kotak nama
+                return; // Hentikan proses simpan
+            }
             try
             {
                 conn.Open();
@@ -100,13 +106,38 @@ namespace Jijehh_TokoSembako
             catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); if (conn.State == ConnectionState.Open) conn.Close(); }
         }
 
-        private void txtTelepon_KeyPress(object sender, KeyPressEventArgs e)
+        private void ValidasiTelepon_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Hanya mengizinkan angka dan tombol Backspace untuk No Telepon
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            // Hanya izinkan angka, backspace, tanda plus (+), dan strip (-)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != '+' && e.KeyChar != '-')
             {
                 e.Handled = true;
-                MessageBox.Show("Nomor Telepon wajib diisi dengan angka!", "Validasi Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Nomor telepon hanya boleh berisi angka atau simbol + dan -", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtNama_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Hanya izinkan Huruf, Angka, Spasi, Backspace (Control), dan simbol tertentu (titik, koma, &, strip)
+            if (!char.IsLetterOrDigit(e.KeyChar) &&
+                !char.IsControl(e.KeyChar) &&
+                !char.IsWhiteSpace(e.KeyChar) &&
+                e.KeyChar != '.' &&
+                e.KeyChar != ',' &&
+                e.KeyChar != '&' &&
+                e.KeyChar != '-')
+            {
+                e.Handled = true; // Tolak karakter lain
+                MessageBox.Show("Nama distributor hanya boleh berisi huruf, angka, dan tanda baca umum (titik, koma, &, -).", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void ValidasiID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Hanya izinkan huruf, angka, dan tombol hapus (backspace)
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Kolom ID/Username hanya boleh diisi Huruf dan Angka tanpa spasi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

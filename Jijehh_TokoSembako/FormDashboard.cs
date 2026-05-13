@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -45,5 +45,6 @@ namespace Jijehh_TokoSembako
             FormUtama fUtama = new FormUtama();
             fUtama.ShowDialog();    
         }
+
     }
 }

@@ -17,7 +17,7 @@ namespace Jijehh_TokoSembako
         SqlConnection conn = new SqlConnection("Server=LAPTOP-M60LBIQK\\ZIDANEAS;Database=DB_TokoSembako;Integrated Security=True;");
 
         public FormUtama()
-        {
+        {                                                                       
             InitializeComponent();
         }
 
@@ -252,14 +252,33 @@ namespace Jijehh_TokoSembako
             }
         }
 
-        private void txtHarga_KeyPress(object sender, KeyPressEventArgs e)
+        private void ValidasiAngka_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Hanya mengizinkan angka dan tombol Backspace
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            // Hanya izinkan ketikan Angka dan tombol Control (seperti Backspace untuk menghapus)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                e.Handled = true;
-                MessageBox.Show("Harga hanya boleh diisi dengan nominal angka!", "Validasi Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Handled = true; // Langsung tolak ketikan selain angka
+                MessageBox.Show("Kolom ini hanya boleh diisi dengan angka bulat!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        private void ValidasiID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Hanya izinkan huruf, angka, dan tombol hapus (backspace)
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Kolom ID/Username hanya boleh diisi Huruf dan Angka tanpa spasi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void ValidasiHuruf_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Hanya izinkan huruf, spasi, dan tombol hapus
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Kolom ini hanya boleh diisi dengan huruf!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
     }
 }

@@ -149,13 +149,16 @@
             // txtID
             // 
             this.txtID.Location = new System.Drawing.Point(233, 74);
+            this.txtID.MaxLength = 5;
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(100, 22);
             this.txtID.TabIndex = 10;
+            this.txtID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidasiID_KeyPress);
             // 
             // txtNama
             // 
             this.txtNama.Location = new System.Drawing.Point(233, 112);
+            this.txtNama.MaxLength = 50;
             this.txtNama.Name = "txtNama";
             this.txtNama.Size = new System.Drawing.Size(100, 22);
             this.txtNama.TabIndex = 11;
@@ -163,9 +166,11 @@
             // txtKategori
             // 
             this.txtKategori.Location = new System.Drawing.Point(233, 156);
+            this.txtKategori.MaxLength = 25;
             this.txtKategori.Name = "txtKategori";
             this.txtKategori.Size = new System.Drawing.Size(100, 22);
             this.txtKategori.TabIndex = 12;
+            this.txtKategori.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidasiHuruf_KeyPress);
             // 
             // txtStok
             // 
@@ -173,7 +178,7 @@
             this.txtStok.Name = "txtStok";
             this.txtStok.Size = new System.Drawing.Size(100, 22);
             this.txtStok.TabIndex = 13;
-            this.txtStok.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStok_KeyPress);
+            this.txtStok.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidasiAngka_KeyPress);
             // 
             // txtHarga
             // 
@@ -181,7 +186,7 @@
             this.txtHarga.Name = "txtHarga";
             this.txtHarga.Size = new System.Drawing.Size(100, 22);
             this.txtHarga.TabIndex = 14;
-            this.txtHarga.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHarga_KeyPress);
+            this.txtHarga.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidasiAngka_KeyPress);
             // 
             // label6
             // 
