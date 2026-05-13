@@ -147,6 +147,7 @@ namespace Jijehh_TokoSembako
                 conn.Close();
 
                 LoadData();
+                btnBersih_Click(null, null); // Otomatis mengosongkan form
             }
             catch (Exception ex)
             {
@@ -180,6 +181,7 @@ namespace Jijehh_TokoSembako
                 conn.Close();
 
                 LoadData();
+                btnBersih_Click(null, null); // Otomatis mengosongkan form
             }
             catch (Exception ex)
             {
@@ -210,6 +212,7 @@ namespace Jijehh_TokoSembako
                     conn.Close();
 
                     LoadData();
+                    btnBersih_Click(null, null); // Otomatis mengosongkan form
                 }
                 catch (Exception ex)
                 {
