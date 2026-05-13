@@ -31,3 +31,12 @@ BEGIN
     WHERE ID_Barang = @ID_Barang
 END
 GO
+
+CREATE PROCEDURE sp_DeleteBarang
+    @ID_Barang VARCHAR(5)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    DELETE FROM Barang WHERE ID_Barang = @ID_Barang
+END
+GO
