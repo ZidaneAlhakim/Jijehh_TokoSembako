@@ -248,6 +248,11 @@ namespace Jijehh_TokoSembako
                 if (conn.State == ConnectionState.Open) conn.Close();
             }
         }
+        // KODE MITIGASI (PENCEGAHAN) SQL INJECTION:
+        // Jika ingin aman, hapus kodingan string rentan di atas, dan gunakan SP ini:
+        // SqlCommand cmd = new SqlCommand("sp_SearchBarang", conn);
+        // cmd.CommandType = CommandType.StoredProcedure;
+        // cmd.Parameters.AddWithValue("@Cari", txtCari.Text);
 
         private void btnBersih_Click(object sender, EventArgs e)
         {
