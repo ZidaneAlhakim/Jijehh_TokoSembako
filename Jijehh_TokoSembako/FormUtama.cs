@@ -113,33 +113,33 @@ namespace Jijehh_TokoSembako
 
         private void btnSimpan_Click(object sender, EventArgs e)
         {
-            // Syarat UCP: Validasi input agar tidak ada field penting yang kosong
-            if (txtID.Text == "" || txtNama.Text == "" || txtKategori.Text == "" || txtStok.Text == "" || txtHarga.Text == "")
+            if (txtID.Text == "" || txtNama.Text == "" || txtStok.Text == "" || txtHarga.Text == "")
             {
-                MessageBox.Show("Data tidak boleh kosong! Harap isi semua kotak.", "Validasi Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Data tidak boleh kosong!");
                 return;
             }
 
             try
             {
                 conn.Open();
-                // Syarat UCP: Implementasikan query INSERT menggunakan SqlCommand
-                SqlCommand cmd = new SqlCommand("INSERT INTO Barang (ID_Barang, Nama_Barang, Kategori, Stok, Harga_Jual) VALUES (@id, @nama, @kategori, @stok, @harga)", conn);
-                cmd.Parameters.AddWithValue("@id", txtID.Text);
-                cmd.Parameters.AddWithValue("@nama", txtNama.Text);
-                cmd.Parameters.AddWithValue("@kategori", txtKategori.Text);
-                cmd.Parameters.AddWithValue("@stok", int.Parse(txtStok.Text));
-                cmd.Parameters.AddWithValue("@harga", decimal.Parse(txtHarga.Text));
+                SqlCommand cmd = new SqlCommand("sp_InsertBarang", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@ID_Barang", txtID.Text);
+                cmd.Parameters.AddWithValue("@Nama_Barang", txtNama.Text);
+                cmd.Parameters.AddWithValue("@Kategori", txtKategori.Text);
+                cmd.Parameters.AddWithValue("@Stok", short.Parse(txtStok.Text));
+                cmd.Parameters.AddWithValue("@Harga_Jual", decimal.Parse(txtHarga.Text));
 
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Data berhasil ditambahkan!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 conn.Close();
 
-                TampilData();
+                LoadData();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Gagal menyimpan data!\nError: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Gagal menyimpan: " + ex.Message);
                 if (conn.State == ConnectionState.Open) conn.Close();
             }
         }
