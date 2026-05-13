@@ -24,9 +24,10 @@ namespace Jijehh_TokoSembako
         
         private void FormUtama_Load(object sender, EventArgs e)
         {
-            CekKoneksiDatabase(); 
+            CekKoneksiDatabase();
             LoadData();         
-            HitungTotal();        
+            HitungTotal();
+            this.StartPosition = FormStartPosition.CenterScreen; // Muncul di tengah layar
         }
 
         
