@@ -40,3 +40,13 @@ BEGIN
     DELETE FROM Barang WHERE ID_Barang = @ID_Barang
 END
 GO
+
+CREATE PROCEDURE sp_SearchBarang
+    @Cari VARCHAR(50)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    -- Search memanfaatkan VIEW yang sudah dibuat
+    SELECT * FROM vw_TampilBarang WHERE Nama_Barang LIKE '%' + @Cari + '%'
+END
+GO
