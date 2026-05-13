@@ -107,8 +107,9 @@ namespace Jijehh_TokoSembako
 
         private void dgvData_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-            if (e.RowIndex >= 0)
+
+            // Tambahkan pengecekan agar tidak error saat klik area kosong
+            if (e.RowIndex >= 0 && dgvData.Rows[e.RowIndex].Cells[0].Value != null)
             {
                 DataGridViewRow row = this.dgvData.Rows[e.RowIndex];
 
