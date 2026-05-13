@@ -148,34 +148,32 @@ namespace Jijehh_TokoSembako
         {
             if (txtID.Text == "")
             {
-                MessageBox.Show("Pilih dulu data yang mau diubah dari tabel!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Pilih data dulu!");
                 return;
             }
 
-            DialogResult dialogResult = MessageBox.Show("Apakah Anda yakin ingin mengubah data ini?", "Konfirmasi Ubah", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.Yes)
+            try
             {
-                try
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE Barang SET Nama_Barang=@nama, Kategori=@kategori, Stok=@stok, Harga_Jual=@harga WHERE ID_Barang=@id", conn);
-                    cmd.Parameters.AddWithValue("@id", txtID.Text);
-                    cmd.Parameters.AddWithValue("@nama", txtNama.Text);
-                    cmd.Parameters.AddWithValue("@kategori", txtKategori.Text);
-                    cmd.Parameters.AddWithValue("@stok", int.Parse(txtStok.Text));
-                    cmd.Parameters.AddWithValue("@harga", decimal.Parse(txtHarga.Text));
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("sp_UpdateBarang", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Data berhasil diubah!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    conn.Close();
+                cmd.Parameters.AddWithValue("@ID_Barang", txtID.Text);
+                cmd.Parameters.AddWithValue("@Nama_Barang", txtNama.Text);
+                cmd.Parameters.AddWithValue("@Kategori", txtKategori.Text);
+                cmd.Parameters.AddWithValue("@Stok", short.Parse(txtStok.Text));
+                cmd.Parameters.AddWithValue("@Harga_Jual", decimal.Parse(txtHarga.Text));
 
-                    TampilData();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Gagal mengubah data: " + ex.Message);
-                    if (conn.State == ConnectionState.Open) conn.Close();
-                }
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Data berhasil diubah!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                conn.Close();
+
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal mengubah: " + ex.Message);
+                if (conn.State == ConnectionState.Open) conn.Close();
             }
         }
 
