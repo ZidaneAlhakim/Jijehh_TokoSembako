@@ -15,7 +15,7 @@ namespace Jijehh_TokoSembako
  */
 
         SqlConnection conn = new SqlConnection("Server=LAPTOP-M60LBIQK\\ZIDANEAS;Database=DB_TokoSembako;Integrated Security=True;");
-
+        BindingSource bindingSource = new BindingSource();
         public FormUtama()
         {                                                                       
             InitializeComponent();
@@ -25,7 +25,7 @@ namespace Jijehh_TokoSembako
         private void FormUtama_Load(object sender, EventArgs e)
         {
             CekKoneksiDatabase(); 
-            TampilData();         
+            LoadData();         
             HitungTotal();        
         }
 
@@ -47,31 +47,33 @@ namespace Jijehh_TokoSembako
                 MessageBox.Show("Gagal terhubung ke database!\nError: " + ex.Message, "Koneksi Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
-        private void TampilData()
+
+        private void LoadData()
         {
             try
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Barang", conn);
-
-                
-                SqlDataReader rd = cmd.ExecuteReader();
+                // Menggunakan VIEW sesuai syarat UCP
+                SqlCommand cmd = new SqlCommand("SELECT * FROM vw_TampilBarang", conn);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
-                dt.Load(rd);
+                da.Fill(dt);
 
-                
-                dgvData.DataSource = dt;
+                // Menggunakan BINDING sesuai syarat UCP
+                bindingSource.DataSource = dt;
+                dgvData.DataSource = bindingSource;
+
                 conn.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Gagal menampilkan data: " + ex.Message);
+                MessageBox.Show("Gagal memuat data: " + ex.Message);
                 if (conn.State == ConnectionState.Open) conn.Close();
             }
+            HitungTotal();
         }
 
-        
+
         private void HitungTotal()
         {
             try
