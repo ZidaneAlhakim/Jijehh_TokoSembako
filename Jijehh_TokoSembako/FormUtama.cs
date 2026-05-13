@@ -79,13 +79,15 @@ namespace Jijehh_TokoSembako
             try
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Barang", conn);
+                SqlCommand cmd = new SqlCommand("sp_CountBarang", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                
-                int total = (int)cmd.ExecuteScalar();
+                SqlParameter outputParam = new SqlParameter("@Total", SqlDbType.Int);
+                outputParam.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(outputParam);
 
-                
-                lblTotalRecord.Text = "Total Record: " + total.ToString();
+                cmd.ExecuteNonQuery();
+                lblTotalRecord.Text = "Total Record: " + outputParam.Value.ToString();
                 conn.Close();
             }
             catch (Exception ex)
