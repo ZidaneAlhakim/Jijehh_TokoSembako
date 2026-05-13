@@ -216,20 +216,23 @@ namespace Jijehh_TokoSembako
             try
             {
                 conn.Open();
-                // Syarat UCP: Menggunakan query pencarian dengan klausa LIKE
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Barang WHERE Nama_Barang LIKE '%' + @cari + '%'", conn);
-                cmd.Parameters.AddWithValue("@cari", txtCari.Text);
 
-                SqlDataReader rd = cmd.ExecuteReader();
+                // KODINGAN RENTAN (VULNERABLE) UNTUK DEMO SQL INJECTION!
+                // Dilarang pakai Parameter (@) atau Stored Procedure di sini.
+                string queryRentan = "SELECT * FROM vw_TampilBarang WHERE Nama_Barang = '" + txtCari.Text + "'";
+
+                SqlCommand cmd = new SqlCommand(queryRentan, conn);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
-                dt.Load(rd);
+                da.Fill(dt);
 
-                // Langsung timpa isi tabel dengan hasil pencarian
-                dgvData.DataSource = dt;
+                bindingSource.DataSource = dt;
+                dgvData.DataSource = bindingSource;
                 conn.Close();
             }
             catch (Exception ex)
             {
+                // Sengaja kita tampilkan error asli SQL-nya agar hacker (dosen) tahu celahnya
                 MessageBox.Show("Gagal mencari data: " + ex.Message);
                 if (conn.State == ConnectionState.Open) conn.Close();
             }
