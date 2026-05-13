@@ -63,6 +63,9 @@ namespace Jijehh_TokoSembako
                 bindingSource.DataSource = dt;
                 dgvData.DataSource = bindingSource;
                 bindingNavigator1.BindingSource = bindingSource;
+                // Format kolom Harga_Jual menjadi mata uang Rupiah
+                dgvData.Columns["Harga_Jual"].DefaultCellStyle.Format = "C0";
+                dgvData.Columns["Harga_Jual"].DefaultCellStyle.FormatProvider = new System.Globalization.CultureInfo("id-ID");
 
                 conn.Close();
             }
