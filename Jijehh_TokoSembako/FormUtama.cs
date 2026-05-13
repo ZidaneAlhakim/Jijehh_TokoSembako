@@ -66,6 +66,10 @@ namespace Jijehh_TokoSembako
                 // Format kolom Harga_Jual menjadi mata uang Rupiah
                 dgvData.Columns["Harga_Jual"].DefaultCellStyle.Format = "C0";
                 dgvData.Columns["Harga_Jual"].DefaultCellStyle.FormatProvider = new System.Globalization.CultureInfo("id-ID");
+                // Kunci tabel dan percantik warna baris selang-seling
+                dgvData.ReadOnly = true;
+                dgvData.AllowUserToAddRows = false;
+                dgvData.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
 
                 conn.Close();
             }
