@@ -62,6 +62,7 @@ namespace Jijehh_TokoSembako
                 // Menggunakan BINDING sesuai syarat UCP
                 bindingSource.DataSource = dt;
                 dgvData.DataSource = bindingSource;
+                bindingNavigator1.BindingSource = bindingSource;
 
                 conn.Close();
             }
@@ -200,7 +201,7 @@ namespace Jijehh_TokoSembako
                     MessageBox.Show("Data berhasil dihapus!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
 
-                    TampilData();
+                    LoadData();
                 }
                 catch (Exception ex)
                 {
